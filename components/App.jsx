@@ -1,11 +1,18 @@
-import React from 'react';
-import {View} from 'react-native';
-import {ToDoForm} from './ToDoForm';
-import {ToDoList} from './ToDoList';
+import React, { useState } from 'react';
+import { View } from 'react-native';
+import { ToDoForm } from './ToDoForm';
+import { ToDoList } from './ToDoList';
+
 function App() {
+  const [tasks, setTasks] = useState([
+    'Do laundry',
+    'Go to gym',
+    'Walk dog'
+  ]);
+
   return (
     <View>
-      <ToDoList />
+      <ToDoList tasks={tasks} />
       <ToDoForm />
     </View>
   );
