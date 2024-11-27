@@ -11,8 +11,8 @@ function App() {
   ]);
 
   const addTask = (task) => {
-    if (task.trim().length > 0) {
-      setTasks([...tasks, task]); 
+    if (task.trim().length > 0 && !tasks.includes(task.trim())) { 
+      setTasks([...tasks, task.trim()]);
     }
   };
 
