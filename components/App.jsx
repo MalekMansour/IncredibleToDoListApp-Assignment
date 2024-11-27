@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet} from 'react-native';
 import { ToDoForm } from './ToDoForm';
 import { ToDoList } from './ToDoList';
 
