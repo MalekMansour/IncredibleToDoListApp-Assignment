@@ -18,12 +18,11 @@ function App() {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <ToDoList tasks={tasks} />
       <ToDoForm addTask={addTask} />
     </View>
   );
-}
 
 const styles = StyleSheet.create({
   container: {
