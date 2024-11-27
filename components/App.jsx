@@ -10,10 +10,16 @@ function App() {
     'Walk dog'
   ]);
 
+  const addTask = (task) => {
+    if (task.trim().length > 0) {
+      setTasks([...tasks, task]);
+    }
+  };
+
   return (
     <View>
       <ToDoList tasks={tasks} />
-      <ToDoForm />
+      <ToDoForm addTask={addTask} />
     </View>
   );
 }
