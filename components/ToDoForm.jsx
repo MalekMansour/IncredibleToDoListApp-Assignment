@@ -2,11 +2,13 @@ import { Button, SafeAreaView, StyleSheet, TextInput, View } from 'react-native'
 import React, { useState } from 'react';
 
 export function ToDoForm({ addTask }) {
-  const [task, setTask] = useState('');
+  const [taskText, setTaskText] = useState(''); 
 
   const handleAddTask = () => {
-    addTask(task); 
-    setTask('');
+    if (taskText.trim().length > 0) {
+      addTask(taskText);
+      setTaskText(''); 
+    }
   };
 
   return (
@@ -16,10 +18,10 @@ export function ToDoForm({ addTask }) {
           style={styles.input}
           placeholder="Add a new task..."
           placeholderTextColor="#888"
-          value={task}
-          onChangeText={(text) => setTask(text)} // Update the state
+          onChangeText={(text) => setTaskText(text)} 
+          value={taskText} 
         />
-        <Button title="Add" color="#1E90FF" onPress={handleAddTask} />
+        <Button title="Add Task" color="#1E90FF" onPress={handleAddTask} /> 
       </View>
     </SafeAreaView>
   );
@@ -33,18 +35,18 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginTop: 20,
     padding: 10,
-    backgroundColor: '#333', 
+    backgroundColor: '#333',
     borderRadius: 10,
   },
   input: {
     flex: 1,
     borderWidth: 1,
-    borderColor: '#555', 
+    borderColor: '#555',
     paddingHorizontal: 15,
     paddingVertical: 8,
     marginRight: 15,
-    backgroundColor: '#222', 
-    color: '#fff', 
+    backgroundColor: '#222',
+    color: '#fff',
     borderRadius: 5,
   },
 });
