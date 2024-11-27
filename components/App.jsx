@@ -12,7 +12,7 @@ function App() {
 
   const addTask = (task) => {
     if (task.trim().length > 0) {
-      setTasks([...tasks, task]);
+      setTasks([...tasks, task]); 
     }
   };
 
