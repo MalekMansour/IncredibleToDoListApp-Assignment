@@ -1,47 +1,29 @@
-import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { ToDoForm } from './ToDoForm';
-import { ToDoList } from './ToDoList';
+// App.js
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './HomeScreen';
+import AboutScreen from './AboutScreen';
 
+// Define stack navigator
 const Stack = createStackNavigator();
-
-function ToDoScreen() {
-  const [tasks, setTasks] = useState(['Do laundry', 'Go to gym', 'Walk dog']);
-
-  const addTask = (task) => {
-    if (task.trim().length > 0 && !tasks.includes(task.trim())) {
-      setTasks([...tasks, task.trim()]);
-    }
-  };
-
-  return (
-    <View style={styles.container}>
-      <ToDoList tasks={tasks} />
-      <ToDoForm addTask={addTask} />
-    </View>
-  );
-}
 
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        {/* Add the Home and About screens */}
         <Stack.Screen 
-          name="ToDo" 
-          component={ToDoScreen} 
-          options={{ title: 'To-Do List' }} 
+          name="Home" 
+          component={HomeScreen} 
+          options={{ title: 'Home - To-Do List' }}
+        />
+        <Stack.Screen 
+          name="About" 
+          component={AboutScreen} 
+          options={{ title: 'About This App' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#282c34',
-    padding: 20,
-  },
-});
