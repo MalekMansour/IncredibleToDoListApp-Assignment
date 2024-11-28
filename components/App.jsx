@@ -5,10 +5,8 @@ import { ToDoList } from './ToDoList';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-// Define stack navigator
 const Stack = createStackNavigator();
 
-// Define the ToDoScreen component
 function ToDoScreen() {
   const [tasks, setTasks] = useState(['Do laundry', 'Go to gym', 'Walk dog']);
 
@@ -26,7 +24,6 @@ function ToDoScreen() {
   );
 }
 
-// Main App Component
 export default function App() {
   return (
     <NavigationContainer>
