@@ -1,33 +1,54 @@
-import React from 'react';
-import { Text, Button, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import MainLayout from '../layouts/MainLayout';
 
-const AboutScreen = ({ navigation }) => {
-  const currentDate = new Date().toLocaleDateString();
+const AboutScreen = () => {
+  const [easterEggVisible, setEasterEggVisible] = useState(false);
+
+  const handlePress = () => {
+    setEasterEggVisible(!easterEggVisible);
+  };
 
   return (
     <MainLayout>
-      <Text style={styles.title}>Incredible To-Do List App</Text>
-      <Text style={styles.subtitle}>Created by: Malek Mansour</Text>
-      <Text style={styles.subtitle}>Date: {currentDate}</Text>
-      <Button
-        title="Go Back to Home"
-        onPress={() => navigation.navigate('Home')}
-      />
+      <View style={styles.container}>
+        <Text style={styles.title}>Incredible To-Do List App</Text>
+        <TouchableOpacity onPress={handlePress}>
+          <Text style={styles.name}>Malek Mansour</Text>
+        </TouchableOpacity>
+        {easterEggVisible && (
+          <Text style={styles.easterEgg}>You've found the Easter Egg!</Text>
+        )}
+        <Text style={styles.date}>Date: {new Date().toLocaleDateString()}</Text>
+      </View>
     </MainLayout>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
   title: {
     fontSize: 24,
-    color: '#ffffff',
     fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  name: {
+    fontSize: 18,
+    color: '#007BFF',
     marginBottom: 10,
   },
-  subtitle: {
-    fontSize: 18,
-    color: '#dcdcdc',
+  easterEgg: {
+    fontSize: 16,
+    color: '#FF4500',
+    marginTop: 10,
+  },
+  date: {
+    fontSize: 16,
+    marginTop: 20,
   },
 });
 
