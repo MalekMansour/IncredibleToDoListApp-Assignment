@@ -13,9 +13,13 @@ const HomeScreen = ({ navigation }) => {
     }
   };
 
+  const deleteTask = (taskToDelete) => {
+    setTasks(tasks.filter((task) => task !== taskToDelete));
+  };
+
   return (
     <MainLayout>
-      <ToDoList tasks={tasks} />
+      <ToDoList tasks={tasks} deleteTask={deleteTask} />
       <ToDoForm addTask={addTask} />
       <Button
         title="Go to About"
