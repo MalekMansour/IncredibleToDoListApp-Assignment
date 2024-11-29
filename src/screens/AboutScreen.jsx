@@ -1,10 +1,8 @@
-// src/screens/AboutScreen.jsx
-
 import React from 'react';
 import { Text, Button, StyleSheet } from 'react-native';
 import MainLayout from '../layouts/MainLayout';
 
-export default function AboutScreen({ navigation }) {
+const AboutScreen = ({ navigation }) => {
   const currentDate = new Date().toLocaleDateString();
 
   return (
@@ -18,7 +16,7 @@ export default function AboutScreen({ navigation }) {
       />
     </MainLayout>
   );
-}
+};
 
 const styles = StyleSheet.create({
   title: {
@@ -32,3 +30,5 @@ const styles = StyleSheet.create({
     color: '#dcdcdc',
   },
 });
+
+export default AboutScreen;
