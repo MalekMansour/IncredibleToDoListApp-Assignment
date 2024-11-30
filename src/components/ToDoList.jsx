@@ -1,4 +1,4 @@
-import { Pressable, ScrollView, StyleSheet, Text, View, Button } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React from 'react';
 
 export function ToDoList({ tasks, deleteTask }) {
@@ -9,10 +9,13 @@ export function ToDoList({ tasks, deleteTask }) {
           <View style={styles.task}>
             <Text style={styles.taskText}>{task}</Text>
           </View>
-          <Button
-            title="Delete"
-            onPress={() => deleteTask(index)} 
-          />
+          {/* Delete button */}
+          <TouchableOpacity
+            style={styles.deleteButton}
+            onPress={() => deleteTask(index)}
+          >
+            <Text style={styles.deleteButtonText}>Delete</Text>
+          </TouchableOpacity>
         </View>
       ))}
     </ScrollView>
@@ -21,14 +24,28 @@ export function ToDoList({ tasks, deleteTask }) {
 
 const styles = StyleSheet.create({
   taskContainer: {
-    marginBottom: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10, 
   },
   task: {
     padding: 20,
     borderBottomWidth: 1,
     borderColor: '#fff',
+    flex: 1, 
   },
   taskText: {
     fontSize: 14,
+  },
+  deleteButton: {
+    backgroundColor: 'red',
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 5,
+  },
+  deleteButtonText: {
+    color: 'white',
+    fontSize: 12,
   },
 });
