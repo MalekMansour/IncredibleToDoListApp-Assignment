@@ -1,21 +1,28 @@
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View, Button } from 'react-native';
 import React from 'react';
 
 export function ToDoList({ tasks, deleteTask }) {
   return (
     <ScrollView>
       {tasks.map((task, index) => (
-        <Pressable key={index} onPress={() => deleteTask(task)}>
+        <View key={index} style={styles.taskContainer}>
           <View style={styles.task}>
             <Text style={styles.taskText}>{task}</Text>
           </View>
-        </Pressable>
+          <Button
+            title="Delete"
+            onPress={() => deleteTask(index)} 
+          />
+        </View>
       ))}
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  taskContainer: {
+    marginBottom: 10,
+  },
   task: {
     padding: 20,
     borderBottomWidth: 1,
