@@ -13,8 +13,9 @@ const HomeScreen = ({ navigation }) => {
     }
   };
 
-  const deleteTask = (taskToDelete) => {
-    setTasks(tasks.filter((task) => task !== taskToDelete));
+  const deleteTask = (index) => {
+    const newTasks = tasks.filter((_, taskIndex) => taskIndex !== index);
+    setTasks(newTasks);
   };
 
   return (
