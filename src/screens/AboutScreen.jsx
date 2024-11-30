@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import MainLayout from '../layouts/MainLayout';
 
-const AboutScreen = () => {
+const AboutScreen = ({ navigation }) => {
   const [easterEggVisible, setEasterEggVisible] = useState(false);
 
   const handlePress = () => {
     setEasterEggVisible(!easterEggVisible);
+  };
+
+  const handleReturnHome = () => {
+    navigation.goBack(); 
   };
 
   return (
@@ -20,6 +24,11 @@ const AboutScreen = () => {
           <Text style={styles.easterEgg}>You've found the Easter Egg!</Text>
         )}
         <Text style={styles.date}>Date: {new Date().toLocaleDateString()}</Text>
+
+        {/* Return to Home Button */}
+        <TouchableOpacity onPress={handleReturnHome} style={styles.returnButton}>
+          <Text style={styles.returnButtonText}>Return to Home</Text>
+        </TouchableOpacity>
       </View>
     </MainLayout>
   );
@@ -49,6 +58,17 @@ const styles = StyleSheet.create({
   date: {
     fontSize: 16,
     marginTop: 20,
+  },
+  returnButton: {
+    backgroundColor: '#007BFF',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  returnButtonText: {
+    color: 'white',
+    fontSize: 16,
   },
 });
 
